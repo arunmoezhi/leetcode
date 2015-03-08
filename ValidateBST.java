@@ -25,9 +25,9 @@
 *						3		7
 * Here in the right subtree of 4, 3 is less than 6 but also less than 4 which violates BST property
 * So at each level in the recursion we need to keep track of the range of values (min & max)
-*	allowed in each subtree.
-*	Lets begin with the root. The root can have any value. So we set the range as (-INF,+INF)
-*	Now lets say root has value x. The left subtree can then have values from (-INF,x).
+*	allowed in each subtree. Lets begin with the root. The root can have any value. 
+*	So we set the range as (-INF,+INF). Now lets say root has value x. 
+*	The left subtree can then have values from (-INF,x).
 *	Similarly the right subtree can have values from (x,+INF). Recurse :) 
 */
 
