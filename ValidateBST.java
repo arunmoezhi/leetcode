@@ -20,10 +20,10 @@
 *	root.left.val < root.val AND root.right.val > root.val AND
 * recursive check if root.left is valid AND root.right is valid
 * An example where this would fail is :
-* 			4
-*			1			6
-*					3		7
-* Here in the right subtree of 4, 3 is less than 6 but greater than 4.
+* 				4
+*			1				6
+*						3		7
+* Here in the right subtree of 4, 3 is less than 6 but also less than 4 which violates BST property
 * So at each level in the recursion we need to keep track of the range of values (min & max)
 *	allowed in each subtree.
 *	Lets begin with the root. The root can have any value. So we set the range as (-INF,+INF)
