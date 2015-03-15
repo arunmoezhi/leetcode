@@ -32,54 +32,43 @@ public class ThreeSumClosest
 {
     public int threeSumClosest(int[] A, int target) 
     {
-        int N = A.length;
-				// If there are less than three elements we don't have a choice other than returning their entire sum
-        if(N<=3)
-        {
-            int sum=0;
-            for(int i=0;i<N;i++)
-            {
-                sum = sum+A[i];
-            }
-            return sum;
-        }
-        
-        int absMinDiff = Integer.MAX_VALUE; // keep track of the minimum difference seen so far
-        int minSum=0;
         Arrays.sort(A); // sort the array
-        for(int i=0;i<N;i++) // for each element A[i], check the subarray (j,k)
+        int outSum=0;
+        int absMinDiff=Integer.MAX_VALUE;  // keep track of the minimum difference seen so far
+        
+        for(int i=0;i<A.length;i++) // for each element A[i], check the subarray (j,k)
         {
             int j=i+1;
-            int k=N-1;
+            int k=A.length-1;
             while(j<k)
             {
-                int currentSum = A[i]+A[j]+A[k];
-                int diff = currentSum-target;
-                if (diff > 0)
+                int sum = A[i]+A[j]+A[k];
+                int diff = target-sum;
+                
+                if(diff > 0)
                 {
-                    if(diff < absMinDiff)
+                    j++; // drop the smallest element
+                    if(absMinDiff > diff)
                     {
                         absMinDiff = diff;
-                        minSum = currentSum;
+                        outSum = sum;
                     }
-                    k--; // drop the largest element
                 }
                 else if(diff < 0)
                 {
-                    if(-diff < absMinDiff)
+                    k--; // drop the largest element
+                    if(absMinDiff > -diff)
                     {
                         absMinDiff = -diff;
-                        minSum = currentSum;
+                        outSum = sum;
                     }
-                    j++; // drop the smallest element
                 }
-
                 else
                 {
-                    return currentSum;
+                    return sum;
                 }
             }
         }
-        return minSum;
+        return outSum;
     }
 }
