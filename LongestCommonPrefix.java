@@ -40,13 +40,11 @@ public class LongestCommonPrefix
 			return "";
 		}
 		String out="";
-		int[] length = new int[strs.length];
 		int minLength=Integer.MAX_VALUE;
 		//compute minLength - length of the shortest string 
 		for(int i=0;i<strs.length;i++)
 		{
-			length[i] = strs[i].length();
-			minLength = Math.min(minLength,length[i]);
+			minLength = Math.min(minLength,strs[i].length());
 		}
 		for(int i=0;i<minLength;i++) // for every character from 0 to minLength-1
 		{
